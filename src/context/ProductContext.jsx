@@ -10,10 +10,14 @@ export const ProductProvider = ({ children }) => {
 
   const filterProduct = product.filter((item) => {
     const brandMatch =
-      selectBrand === "All" || item.brand === selectBrand;
+      !selectBrand ||
+      selectBrand === "All" ||
+      item.brand?.toLowerCase() === selectBrand.toLowerCase();
 
     const categoryMatch =
-      selectCategory === "All" || item.category === selectCategory;
+      !selectCategory ||
+      selectCategory === "All" ||
+      item.category?.toLowerCase() === selectCategory.toLowerCase();
 
     return brandMatch && categoryMatch;
   });

@@ -1,18 +1,88 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaSearch } from 'react-icons/fa';
 
 function Navbar() {
   return (
-    <div className='bg-amber-500 h-15 justify-between flex items-center p-5'>
-      <div className='text-3xl font-bold text-center text-white'>
-        <h1>Shop Online</h1>
-      </div>
-      <div className='text-center gap-2 flex'>
-        <input type="text"  className='w-xl bg-amber-800 ms-2 rounded-2xl h-10 outline-0 ps-3 text-2xl text-white' placeholder='🔍Search Here...'/>
-        <button className='bg-orange-600 rounded-2xl h-10 w-30 text-2xl text-white hover:bg-yellow-500  cursor-pointer'>Search</button>
-      </div>
-    </div>
+    <header className="bg-linear-to-r from-amber-500 via-orange-500 to-amber-600 shadow-md w-full">
+      {/* Desktop & Tablet Layout (md and up) */}
+      <div className="hidden md:flex h-16 justify-between items-center px-6 py-4 w-full">
+        <div className="text-3xl font-bold text-white whitespace-nowrap">
+          <Link to="/" className="hover:opacity-90 transition">
+            <h1>Shop Online</h1>
+          </Link>
+        </div>
 
-  )
+        {/* Search Bar on Desktop */}
+        <div className="text-center gap-2 flex items-center relative flex-1 max-w-2xl mx-8">
+          <input
+            type="text"
+            className="w-full bg-amber-900/60 border border-amber-400/30 rounded-2xl h-10 outline-none ps-10 text-lg lg:text-xl text-white placeholder-amber-200 focus:bg-amber-900/80 transition"
+            placeholder="Search Here..."
+          />
+          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white" />
+          <button className="bg-linear-to-r relative flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-5 h-10 font-bold text-lg text-white shadow-lg transition hover:scale-105 cursor-pointer whitespace-nowrap">
+            Search
+          </button>
+        </div>
+
+        {/* Auth Buttons on Desktop */}
+        <div className="gap-4 flex list-none items-center">
+          <li>
+            <Link to="/login" className="hover:text-amber-300 transition">
+              <button className="relative flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-5 h-10 font-bold text-lg text-white shadow-lg transition hover:scale-105 cursor-pointer">
+                Login
+              </button>
+            </Link>
+          </li>
+          <li>
+            <Link to="/sign-in" className="hover:text-amber-300 transition">
+              <button className="relative flex items-center gap-2 rounded-xl bg-amber-900 hover:bg-amber-800 px-5 h-10 font-bold text-lg text-white shadow-lg transition hover:scale-105 cursor-pointer">
+                Sign-in
+              </button>
+            </Link>
+          </li>
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="md:hidden px-4 py-3 flex flex-col gap-2.5">
+        <div className="flex items-center justify-between">
+          <Link to="/" className="text-2xl font-black text-white tracking-tight">
+            Shop Online
+          </Link>
+          <div className="flex items-center gap-2">
+            <Link to="/login">
+              <button className="rounded-xl bg-amber-500 hover:bg-amber-400 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition">
+                Login
+              </button>
+            </Link>
+            <Link to="/sign-in">
+              <button className="rounded-xl bg-amber-900 hover:bg-amber-800 px-3 py-1.5 text-xs font-bold text-white shadow-sm transition">
+                Sign-in
+              </button>
+            </Link>
+          </div>
+        </div>
+
+        <div className="relative w-full flex items-center gap-2">
+          <div className="relative flex-1">
+            <input
+              type="text"
+              className="w-full bg-amber-900/60 border border-amber-400/30 rounded-xl h-9 outline-none pl-9 pr-3 text-sm text-white placeholder-amber-200"
+              placeholder="Search Here..."
+            />
+            <FaSearch className="absolute left-3 top-1/2 -translate-y-1/2 text-white text-xs" />
+          </div>
+          <button className="rounded-xl bg-amber-500 px-3.5 h-9 font-bold text-xs text-white shadow-md">
+            Search
+          </button>
+        </div>
+      </div>
+    </header>
+  );
 }
 
-export default Navbar
+export default Navbar;
+
+

@@ -11,6 +11,7 @@ import Checkout from "./pages/Checkout";
 import Login from "./pages/Login";
 import SignIn from "./pages/Signin";
 import Service from "./pages/Service";
+import Feature from "./components/home/Feature";
 
 function App() {
   return (
@@ -21,7 +22,8 @@ function App() {
             <Route path="/" element={<Mainlayout />}>
               <Route index element={<HomePage />} />
               <Route path="/Home" element={<HomePage />} />
-              <Route path="/home" element={<HomePage />} />
+              <Route path="/feature/:id" element={<ProductDetail/>}/>
+              {/* <Route path="/home" element={<HomePage />} /> */}
               <Route path="/shop" element={<Shoppage />} />
               <Route path="/about" element={<Aboutpage />} />
               <Route path="/About" element={<Aboutpage />} />

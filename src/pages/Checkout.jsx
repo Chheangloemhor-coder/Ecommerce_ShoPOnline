@@ -16,8 +16,6 @@ import {
   FaReceipt,
   FaShieldAlt,
   FaTruck,
-  // FaBuilding,
-  // FaPhoneAlt,
   FaEnvelope,
   FaMapMarkerAlt,
 } from "react-icons/fa";
@@ -516,11 +514,10 @@ function PaymentOption({ value, selected, onChange, title, description, badge })
   const isSelected = selected === value;
   return (
     <label
-      className={`block cursor-pointer rounded-xl border p-4 transition ${
-        isSelected
+      className={`block cursor-pointer rounded-xl border p-4 transition ${isSelected
           ? "border-amber-500 bg-amber-50/40 ring-1 ring-amber-500"
           : "border-slate-200 hover:border-slate-300 bg-white"
-      }`}
+        }`}
     >
       <div className="flex items-start gap-3">
         <input

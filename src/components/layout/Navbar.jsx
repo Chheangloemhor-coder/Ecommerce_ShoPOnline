@@ -13,19 +13,6 @@ function Navbar() {
           </Link>
         </div>
 
-        {/* Search Bar on Desktop */}
-        <div className="text-center gap-2 flex items-center relative flex-1 max-w-2xl mx-8">
-          <input
-            type="text"
-            className="w-full bg-amber-900/60 border border-amber-400/30 rounded-2xl h-10 outline-none ps-10 text-lg lg:text-xl text-white placeholder-amber-200 focus:bg-amber-900/80 transition"
-            placeholder="Search Here..."
-          />
-          <FaSearch className="absolute left-4 top-1/2 -translate-y-1/2 text-white" />
-          <button className="bg-linear-to-r relative flex items-center gap-2 rounded-xl bg-amber-500 hover:bg-amber-400 px-5 h-10 font-bold text-lg text-white shadow-lg transition hover:scale-105 cursor-pointer whitespace-nowrap">
-            Search
-          </button>
-        </div>
-
         {/* Auth Buttons on Desktop */}
         <div className="gap-4 flex list-none items-center">
           <li>

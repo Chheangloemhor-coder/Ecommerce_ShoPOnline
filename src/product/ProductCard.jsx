@@ -24,9 +24,7 @@ function ProductCard({ product }) {
   // Prevent error if product doesn't exist
   if (!product) return null;
 
-  // ============================================
   // PRICE
-  // ============================================
 
   const originalPrice =
     product.originalPrice || product.originalprice;
@@ -38,26 +36,20 @@ function ProductCard({ product }) {
         )
       : null;
 
-  // ============================================
   // PRODUCT IMAGE
-  // ============================================
 
   const displayImage =
     product.imgs?.[hoveredImageIndex] ||
     product.imgs?.[0] ||
     "https://images.unsplash.com/photo-1588872657578-7efd1f1555ed?auto=format&fit=crop&w=600&q=80";
 
-  // ============================================
   // VIEW PRODUCT DETAIL
-  // ============================================
 
   const handleViewProduct = () => {
     navigate(`/product/${product.id}`);
   };
 
-  // ============================================
   // WISHLIST
-  // ============================================
 
   const handleToggleWishlist = (e) => {
     e.stopPropagation();
@@ -65,9 +57,8 @@ function ProductCard({ product }) {
     setIsWishlisted((prev) => !prev);
   };
 
-  // ============================================
   // ADD TO CART
-  // ============================================
+
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -83,9 +74,7 @@ function ProductCard({ product }) {
     }, 1800);
   };
 
-  // ============================================
   // CHANGE IMAGE
-  // ============================================
 
   const handleChangeImage = (e, index) => {
     e.stopPropagation();
@@ -119,15 +108,11 @@ function ProductCard({ product }) {
       "
     >
 
-      {/* ============================================
-          IMAGE AREA
-      ============================================ */}
+      {/* IMAGE AREA */}
 
       <div className="relative">
 
-        {/* --------------------------------------------
-            BADGES
-        -------------------------------------------- */}
+       {/* BADGES */}
 
         <div
           className="
@@ -211,9 +196,7 @@ function ProductCard({ product }) {
 
         </div>
 
-        {/* --------------------------------------------
-            WISHLIST
-        -------------------------------------------- */}
+        {/* WISHLIST */}
 
         <button
           onClick={handleToggleWishlist}
@@ -299,9 +282,7 @@ function ProductCard({ product }) {
             "
           />
 
-          {/* ------------------------------------------
-              VIEW DETAILS
-          ------------------------------------------ */}
+          {/* VIEW DETAILS */}
 
           <div
             className="
@@ -346,9 +327,7 @@ function ProductCard({ product }) {
 
         </div>
 
-        {/* --------------------------------------------
-            IMAGE DOTS
-        -------------------------------------------- */}
+        {/* IMAGE DOTS */}
 
         {product.imgs && product.imgs.length > 1 && (
           <div
@@ -390,9 +369,7 @@ function ProductCard({ product }) {
       </div>
 
 
-      {/* ============================================
-          PRODUCT INFORMATION
-      ============================================ */}
+      {/* PRODUCT INFORMATION */}
 
       <div
         className="
@@ -406,9 +383,7 @@ function ProductCard({ product }) {
 
         <div>
 
-          {/* ------------------------------------------
-              BRAND + CATEGORY
-          ------------------------------------------ */}
+          {/* BRAND + CATEGORY */}
 
           <div
             className="
@@ -449,9 +424,7 @@ function ProductCard({ product }) {
           </div>
 
 
-          {/* ------------------------------------------
-              PRODUCT NAME
-          ------------------------------------------ */}
+          {/* PRODUCT NAME */}
 
           <h2
             className="
@@ -469,9 +442,7 @@ function ProductCard({ product }) {
           </h2>
 
 
-          {/* ------------------------------------------
-              SPECIFICATIONS
-          ------------------------------------------ */}
+          {/* SPECIFICATIONS */}
 
           {product.specification && (
             <div
@@ -535,9 +506,7 @@ function ProductCard({ product }) {
           )}
 
 
-          {/* ------------------------------------------
-              STAR RATING
-          ------------------------------------------ */}
+          {/* STAR RATING */}
 
           <div
             className="
@@ -587,9 +556,7 @@ function ProductCard({ product }) {
         </div>
 
 
-        {/* ============================================
-            PRICE + CART
-        ============================================ */}
+        {/* PRICE + CART */}
 
         <div
           className="
@@ -604,9 +571,7 @@ function ProductCard({ product }) {
           "
         >
 
-          {/* ------------------------------------------
-              PRICE
-          ------------------------------------------ */}
+          {/* PRICE */}
 
           <div className="flex flex-col">
 
@@ -655,9 +620,7 @@ function ProductCard({ product }) {
           </div>
 
 
-          {/* ------------------------------------------
-              ADD TO CART
-          ------------------------------------------ */}
+          {/* ADD TO CART */}
 
           <button
             onClick={handleAddToCart}

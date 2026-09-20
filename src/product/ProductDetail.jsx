@@ -4,6 +4,7 @@ import { ProductData } from "../data/ProductData";
 import { useProduct } from "../context/ProductContext";
 import ProductCard from "./ProductCard";
 import { useNavigate } from "react-router-dom";
+import Feature from "../components/home/Feature";
 
 import {
   FaCheckCircle,

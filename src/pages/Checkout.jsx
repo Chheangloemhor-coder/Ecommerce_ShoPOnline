@@ -383,7 +383,7 @@ export default function Checkout() {
                           {item.name}
                         </Link>
                         <p className="text-xs text-slate-500 mt-0.5">
-                          ${itemPrice.toFixed(2)} × {itemQty}
+                          ${itemPrice.toFixed(2)} * {itemQty}
                         </p>
                         <div className="flex items-center gap-2 mt-1.5">
                           <div className="inline-flex items-center rounded-lg border border-slate-200 bg-slate-50">
@@ -515,8 +515,8 @@ function PaymentOption({ value, selected, onChange, title, description, badge })
   return (
     <label
       className={`block cursor-pointer rounded-xl border p-4 transition ${isSelected
-          ? "border-amber-500 bg-amber-50/40 ring-1 ring-amber-500"
-          : "border-slate-200 hover:border-slate-300 bg-white"
+        ? "border-amber-500 bg-amber-50/40 ring-1 ring-amber-500"
+        : "border-slate-200 hover:border-slate-300 bg-white"
         }`}
     >
       <div className="flex items-start gap-3">
@@ -691,28 +691,61 @@ function QRPopupModal({ paymentMethod, formData, cart, subtotal, shipping, total
     </div>
   );
 }
-
 function ReceiptModal({ receiptUrl, orderId, onClose, onDownload }) {
+  const openReceipt = () => {
+    if (!receiptUrl) return;
+
+    const newWindow = window.open(receiptUrl, "_blank");
+
+    if (!newWindow) {
+      alert("Please allow pop-ups in Chrome to open the receipt.");
+    }
+  };
+
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-xs">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/60 p-4 backdrop-blur-sm">
       <div className="flex h-[90vh] w-full max-w-4xl flex-col rounded-2xl bg-white shadow-2xl overflow-hidden border border-slate-200">
-        <div className="flex items-center justify-between border-b border-slate-200 bg-amber-500 px-6 py-4 text-white">
+
+        {/* Header */}
+        <div className="flex items-center justify-between border-b border-slate-200 bg-amber-500 px-4 sm:px-6 py-4 text-white">
+
           <div className="flex items-center gap-2">
             <FaFilePdf className="text-xl" />
+
             <div>
-              <h3 className="text-base font-bold">Order Receipt</h3>
-              <p className="text-xs text-amber-100">Order ID: {orderId}</p>
+              <h3 className="text-base font-bold">
+                Order Receipt
+              </h3>
+
+              <p className="text-xs text-amber-100">
+                Order ID: {orderId}
+              </p>
             </div>
           </div>
+
           <div className="flex items-center gap-2">
+
+            {/* Open PDF */}
+            <button
+              type="button"
+              onClick={openReceipt}
+              className="flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-1.5 text-xs font-bold text-amber-700 shadow hover:bg-amber-50 transition cursor-pointer"
+            >
+              <FaFilePdf />
+              <span>Open PDF</span>
+            </button>
+
+            {/* Download */}
             <button
               type="button"
               onClick={onDownload}
               className="flex items-center gap-1.5 rounded-lg bg-white px-3.5 py-1.5 text-xs font-bold text-amber-700 shadow hover:bg-amber-50 transition cursor-pointer"
             >
               <FaDownload />
-              <span>Download PDF</span>
+              <span>Download</span>
             </button>
+
+            {/* Close */}
             <button
               type="button"
               onClick={onClose}
@@ -720,17 +753,61 @@ function ReceiptModal({ receiptUrl, orderId, onClose, onDownload }) {
             >
               <FaTimes className="text-lg" />
             </button>
+
           </div>
         </div>
 
-        <div className="flex-1 bg-slate-100 p-2">
-          <iframe
-            src={receiptUrl}
-            title={`Receipt-${orderId}`}
-            className="h-full w-full rounded-xl border-0 bg-white"
-          />
+        {/* PDF Preview */}
+        <div className="flex-1 bg-slate-100 p-4">
+
+          {receiptUrl ? (
+            <div className="flex h-full flex-col items-center justify-center rounded-xl border border-slate-200 bg-white p-6 text-center">
+
+              <FaFilePdf className="mb-4 text-6xl text-red-500" />
+
+              <h3 className="text-xl font-bold text-slate-800">
+                Receipt PDF Ready
+              </h3>
+
+              <p className="mt-2 max-w-md text-sm text-slate-500">
+                Your receipt has been generated successfully.
+                You can open it in a new Chrome tab or download it
+                to your computer.
+              </p>
+
+              <div className="mt-6 flex flex-col sm:flex-row gap-3">
+
+                <button
+                  type="button"
+                  onClick={openReceipt}
+                  className="flex items-center justify-center gap-2 rounded-xl bg-amber-500 px-6 py-3 text-sm font-bold text-white hover:bg-amber-600 transition cursor-pointer"
+                >
+                  <FaFilePdf />
+                  Open Receipt
+                </button>
+
+                <button
+                  type="button"
+                  onClick={onDownload}
+                  className="flex items-center justify-center gap-2 rounded-xl border border-slate-300 bg-white px-6 py-3 text-sm font-bold text-slate-700 hover:bg-slate-50 transition cursor-pointer"
+                >
+                  <FaDownload />
+                  Download Receipt
+                </button>
+
+              </div>
+
+            </div>
+          ) : (
+            <div className="flex h-full items-center justify-center">
+              <p className="text-sm text-slate-500">
+                Receipt is not available.
+              </p>
+            </div>
+          )}
+
         </div>
       </div>
     </div>
   );
-}
+};

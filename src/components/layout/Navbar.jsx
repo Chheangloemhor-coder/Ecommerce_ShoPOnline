@@ -52,7 +52,7 @@ function Navbar() {
           </div>
         </div>
 
-        <div className="relative w-full flex items-center gap-2">
+        {/* <div className="relative w-full flex items-center gap-2">
           <div className="relative flex-1">
             <input
               type="text"
@@ -64,7 +64,7 @@ function Navbar() {
           <button className="rounded-xl bg-amber-500 px-3.5 h-9 font-bold text-xs text-white shadow-md">
             Search
           </button>
-        </div>
+        </div> */}
       </div>
     </header>
   );
